@@ -43,7 +43,7 @@ Install on a jailbroken device, launch a UE game, then tap the floating button t
 Inject the built `.dylib` into a UE game's `.ipa`, launch then tap the floating button that appears to configure and run a dump.
 
 **Android - Library (`.so`):**  
-Load into the target process, The dump runs automatically after 60 seconds once it's loaded, check logcat "MobileDumper-7" for logs.
+Load into the target process, The dump runs automatically after 60 seconds once it's loaded, check logcat "MobileDumper-7" for logs. Dumps at /sdcard/Android/media/<package name>
 
 **Android - Standalone executable:**  
 If a required argument is missing, MobileDumper-7 will ask user input for it.
