@@ -1,0 +1,19 @@
+name: build
+on: workflow_dispatch
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - run: sudo apt-get update && sudo apt-get install -y ninja-build
+      - run: |
+          chmod +x build.sh
+          export ANDROID_NDK_HOME=$ANDROID_NDK_LATEST_HOME
+          export ANDROID_NDK=$ANDROID_NDK_LATEST_HOME
+          ./build.sh --platform android --target lib --build release --arch arm64
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lib
+          path: "**/*.so"
