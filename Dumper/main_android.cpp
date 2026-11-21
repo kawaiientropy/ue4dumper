@@ -276,7 +276,9 @@ __attribute__((constructor)) static void OnLibraryLoad()
 		sleep(SleepSec);
 
 		bool bDumpLib = false;
-		RunDump(getpid(), getprogname(), EK_MEM_OP_SYSCALL, nullptr, bDumpLib, false);
+		std::string Pkg = getprogname();
+        std::string Out = "/sdcard/Android/media/" + Pkg;
+        RunDump(getpid(), Pkg, EK_MEM_OP_SYSCALL, Out.c_str(), bDumpLib, false);
 	}).detach();
 }
 #else
